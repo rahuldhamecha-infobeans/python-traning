@@ -11,7 +11,7 @@ class Animal():
         print('EATING')
 
 
-# INHERITED CLASS FROM ANIMAL
+# INHERITED CLASS FROM ANIMAL BASE CLASS
 class Dog(Animal):
 
     def __init__(self):
