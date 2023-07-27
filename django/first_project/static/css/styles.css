@@ -1,0 +1,18 @@
+body{
+    text-align: center;
+}
+
+h1{
+    color: red;
+    text-align: center;
+}
+
+h2{
+    color: indigo;
+    text-align: center;
+}
+
+img{
+    margin: 0 auto;
+    text-align: center;
+}
