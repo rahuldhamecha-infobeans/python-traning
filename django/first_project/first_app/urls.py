@@ -3,5 +3,6 @@ from first_app import views
 
 urlpatterns = [
     re_path(r'^$',views.first_app,name='first_app'),
-    path('test/',views.test_route,name='test_route')
+    path("test/",views.test_route,name='test_route'),
+    path("forms/",views.form_view,name='form_view')
 ]

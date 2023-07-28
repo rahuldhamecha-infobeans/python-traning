@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from first_app.models import AccessRecord, Topic, Webpage
+from . import forms
 
 
 # Create your views here.
@@ -19,3 +20,17 @@ def test_route(request):
 def help(request):
     my_content = {'page_name' : 'Help Page','page_content' : 'This is the Help Page.'}
     return render(request,'first_app/help.html',my_content)
+
+def form_view(request):
+    form = forms.MyForm()
+
+    if request.method == "POST":
+        form = forms.MyForm(request.POST)
+
+        if form.is_valid():
+            print('Validate Successfully!')
+            print("Name : {}".format(form.cleaned_data['name']))
+            print("Email : {}".format(form.cleaned_data['email']))
+            print("Text : {}".format(form.cleaned_data['text']))
+
+    return render(request,'first_app/forms.html',{'form':form})
