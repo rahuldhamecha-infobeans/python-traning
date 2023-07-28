@@ -13,6 +13,24 @@
 <body>
     <h1>Hello This is index.html!</h1>
     <h2>{{ name }}</h2>
+    <table class="border_r">
+        {% if webpages %}
+            <table>
+                <thead>
+                    <th>Site Name</th>
+                    <th>Date Access</th>
+                </thead>
+                {% for webpage in webpages %}
+                    <tr>
+                        <td>{{ webpage.name }}</td>
+                        <td>{{ webpage.date }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <h4>No Webpages Found!</h4>
+        {% endif %}
+    </table>
     <img src="{%static 'images/demo_1.jpg' %}" alt="Image is not available" style="height: 500px" />
 </body>
 </html>
