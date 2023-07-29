@@ -1,17 +1,11 @@
 <!doctype html>
+{% extends "layouts/index.html" %}
 {% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>First App</title>
 
-    <link rel="stylesheet" href="{%static 'css/styles.css' %}" />
-</head>
-<body>
-    <h1>Hello This is index.html!</h1>
+{% block page_title %} First App {% endblock %}
+
+{% block body_block %}
+    <h1>Hello This is First index.html!</h1>
     <h2>{{ name }}</h2>
     <table class="border_r">
         {% if webpages %}
@@ -32,5 +26,4 @@
         {% endif %}
     </table>
     <img src="{%static 'images/demo_1.jpg' %}" alt="Image is not available" style="height: 500px" />
-</body>
-</html>
+{% endblock %}

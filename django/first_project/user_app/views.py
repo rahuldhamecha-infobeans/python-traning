@@ -4,8 +4,9 @@ from user_app.forms import UserForm
 # Create your views here.
 
 def index(request):
+    page_name = 'Users'
     users = User.objects.order_by('id')
-    user_content = {'users' : users}
+    user_content = {'users' : users,'page_title' : page_name}
     return render(request,'user_app/index.html',user_content)
 
 def register(request):
