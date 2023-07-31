@@ -1,12 +1,13 @@
 <!doctype html>
 {% extends "layouts/index.html" %}
+{% load helper_functions %}
 {% load static %}
 
 {% block page_title %} First App {% endblock %}
 
 {% block body_block %}
     <h1>Hello This is First index.html!</h1>
-    <h2>{{ name }}</h2>
+    <h2>{{ name | add_name:'( White Devil )' }}</h2>
     <table class="border_r">
         {% if webpages %}
             <table>
