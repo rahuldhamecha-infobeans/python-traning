@@ -50,9 +50,26 @@
         </div>
       </li>
 
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{% url 'help' %}">Help</a>
+      <li class="nav-item">
+      <a class="nav-link" aria-current="page" href="{% url 'auth_app:index' %}">Auth App</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="{% url 'help' %}">Help</a>
+      </li>
+      {% if user.is_authenticated %}
+         <li class="nav-item">
+          <a class="btn btn-danger ms-2" aria-current="page" href="{% url 'auth_app:logout' %}">Logout</a>
         </li>
+      {% else %}
+       <li class="nav-item">
+          <a class="btn btn-primary ms-2" aria-current="page" href="{% url 'auth_app:register' %}">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-success ms-2" aria-current="page" href="{% url 'auth_app:login' %}">Login</a>
+        </li>
+      {% endif %}
+
+
       </ul>
     </div>
   </div>
