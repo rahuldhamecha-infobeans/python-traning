@@ -1,0 +1,27 @@
+<!doctype html>
+{% extends 'advanced_app/base.html' %}
+{% load static %}
+
+{% block page_title %} {{page_name}} {% endblock %}
+
+{% block body_block %}
+    <h1>Welcome to the school Detail page!</h1>
+    <h2>School Detail :</h2>
+    <p>Name : {{ school_detail.name}}</p>
+    <p>Principal : {{ school_detail.principal }}</p>
+    <p>Location : {{ school_detail.location }}</p>
+    <h3>Students : </h3>
+    <table class="table table-responsive table-bordered" cellpadding="0" cellspacing="0">
+        <thead>
+        <th>Name</th>
+        <th>Age</th>
+        </thead>
+        {% for student in school_detail.students.all %}
+            <tr>
+                <td>{{ student.name }}</td>
+                <td>{{ student.age }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{% url 'advanced:school' %}" class="btn btn-primary">Back</a>
+{% endblock %}

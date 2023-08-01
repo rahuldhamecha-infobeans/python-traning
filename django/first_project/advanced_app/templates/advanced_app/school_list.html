@@ -1,0 +1,18 @@
+<!doctype html>
+{% extends 'advanced_app/base.html' %}
+{% load static %}
+
+{% block page_title %} {{page_name}} {% endblock %}
+
+{% block body_block %}
+    <h1>Welcome to List of all the schools!</h1>
+    <ol>
+        {% for school in schools %}
+            <li>
+                <h2>
+                    <a href="{{ school.id }}">{{ school.name }}</a>
+                </h2>
+            </li>
+        {% endfor %}
+    </ol>
+{% endblock %}
