@@ -26,7 +26,8 @@ urlpatterns = [
     path('help/',views.help,name='help'),
     path("first_app/",include('first_app.urls')),
     path("auth_app/",include('auth_app.urls')),
-    path("users/",include('user_app.urls'))
+    path("users/",include('user_app.urls')),
+    path("advanced/",include('advanced_app.urls'))
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
