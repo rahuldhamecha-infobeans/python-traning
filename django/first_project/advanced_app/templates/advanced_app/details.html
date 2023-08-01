@@ -5,6 +5,7 @@
 {% block page_title %} {{page_name}} {% endblock %}
 
 {% block body_block %}
+   <div class="card">
     <h1>Welcome to the school Detail page!</h1>
     <h2>School Detail :</h2>
     <p>Name : {{ school_detail.name}}</p>
@@ -18,10 +19,17 @@
         </thead>
         {% for student in school_detail.students.all %}
             <tr>
-                <td>{{ student.name }}</td>
+                <td>
+                    <a href="{% url 'advanced:student_detail' pk=student.pk %}">{{ student.name }}</a>
+                </td>
                 <td>{{ student.age }}</td>
             </tr>
         {% endfor %}
     </table>
-    <a href="{% url 'advanced:school' %}" class="btn btn-primary">Back</a>
+   </div>
+    <div class="update-group">
+        <a href="{% url 'advanced:school_update' pk=school_detail.pk %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'advanced:school_delete' pk=school_detail.pk %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'advanced:school' %}" class="btn btn-secondary">Back</a>
+    </div>
 {% endblock %}

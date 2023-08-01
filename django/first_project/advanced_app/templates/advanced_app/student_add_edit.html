@@ -1,0 +1,45 @@
+<!doctype html>
+{% extends 'advanced_app/base.html' %}
+{% load static %}
+
+{% block page_title %} {{page_name}} {% endblock %}
+
+{% block body_block %}
+<div class="container">
+    <div class="row">
+        <div class="col-2"></div>
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <h1>
+                    {% if not form.instance.pk %}
+                        Create Student
+                    {% else %}
+                        Update Student
+                    {% endif %}
+                </h1>
+            </div>
+            <form method="POST">
+                <div class="card-body">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                </div>
+                <div class="card-footer">
+                    {% if not form.instance.pk %}
+                        <input type="submit" class="btn btn-primary" value="Create" />
+                    {% else %}
+                        <input type="submit" class="btn btn-primary" value="Update" />
+                    {% endif %}
+                    <a href="{% url 'advanced:school' %}" class="btn btn-secondary">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-2"></div>
+    </div>
+</div>
+
+
+
+</h1>
+{% endblock %}

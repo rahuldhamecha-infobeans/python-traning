@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse,resolve
 
 # Create your models here.
 class School(models.Model):
@@ -9,6 +10,12 @@ class School(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        return reverse("advanced:school_detail",kwargs={'pk':self.pk})
+
+    def get_student_len(self):
+        return self.students
+
 class Student(models.Model):
     name = models.CharField(max_length=264)
     age = models.PositiveIntegerField()
@@ -16,3 +23,6 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("advanced:school_detail",kwargs={'pk':self.school.pk})

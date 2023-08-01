@@ -8,6 +8,7 @@
     <h1>Please Login</h1>
     <form action="{% url 'auth_app:login' %}" method="POST">
         {% csrf_token %}
+        <input type="hidden" name="next_redirect" value="{{ next }}">
         <div class="form-group">
             <label for="username">Username</label>
             <input type="text" name="username" id="username">

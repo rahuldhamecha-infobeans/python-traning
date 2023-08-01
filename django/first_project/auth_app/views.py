@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate,login,logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse,resolve
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect
 
 # Create your views here.
 
@@ -61,18 +62,24 @@ def register(request):
 
 
 def user_login(request):
+    next = '/'
+    if request.method == 'GET':
+        next = request.GET.get('next')
 
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        next_redirect = request.POST.get('next_redirect')
 
         user = authenticate(username=username,password=password)
 
         if user:
             if user.is_active:
                 login(request,user)
-                next_url = request.GET
-                return HttpResponseRedirect(reverse('index'))
+                if next_redirect != '' and next_redirect != '/':
+                    return redirect(next_redirect)
+                else:
+                    return HttpResponseRedirect(reverse('index'))
             else:
                 return HttpResponse('ACCOUNT NOT ACTIVE!')
         else:
@@ -82,5 +89,6 @@ def user_login(request):
 
     template_data = {
         'page_name': 'Login',
+        'next' : next
     }
     return render(request, 'auth_app/login.html', template_data)

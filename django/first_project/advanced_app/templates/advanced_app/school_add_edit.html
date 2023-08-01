@@ -1,0 +1,27 @@
+<!doctype html>
+{% extends 'advanced_app/base.html' %}
+{% load static %}
+
+{% block page_title %} {{page_name}} {% endblock %}
+
+{% block body_block %}
+<h1>
+    {% if not form.instance.pk %}
+        Create School
+    {% else %}
+        Update School
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {% if not form.instance.pk %}
+            <input type="submit" class="btn btn-primary" value="Create" />
+        {% else %}
+            <input type="submit" class="btn btn-primary" value="Update" />
+        {% endif %}
+        <a href="{% url 'advanced:school' %}" class="btn btn-secondary">Back</a>
+
+    </form>
+</h1>
+{% endblock %}

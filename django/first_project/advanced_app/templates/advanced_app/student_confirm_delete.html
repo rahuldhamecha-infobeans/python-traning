@@ -1,0 +1,29 @@
+<!doctype html>
+{% extends 'advanced_app/base.html' %}
+{% load static %}
+
+{% block page_title %} {{page_name}} {% endblock %}
+
+{% block body_block %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Delete !</h4>
+                    </div>
+                    <div class="card-body">
+                        <p>Are you sure, you want to delete {{ student.name}} ?</p>
+                    </div>
+                    <div class="card-footer">
+                        <form method="post">
+                            {% csrf_token %}
+                            <input type="submit" value="Delete" class="btn btn-danger m-2">
+                            <a href="{% url 'advanced:student_detail' pk=student.pk %}" class="btn btn-secondary m-2">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

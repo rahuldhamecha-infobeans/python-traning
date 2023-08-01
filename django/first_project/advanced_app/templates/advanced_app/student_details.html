@@ -1,0 +1,20 @@
+<!doctype html>
+{% extends 'advanced_app/base.html' %}
+{% load static %}
+
+{% block page_title %} {{page_name}} {% endblock %}
+
+{% block body_block %}
+   <div class="card">
+    <h1>Welcome to the Student Detail page!</h1>
+    <h2>Student Detail :</h2>
+    <p>Name : {{ student_detail.name}}</p>
+    <p>Age : {{ student_detail.age }}</p>
+    <p>School : {{ student_detail.school.name }}</p>
+   </div>
+    <div class="update-group">
+        <a href="{% url 'advanced:student_update' pk=student_detail.pk %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'advanced:student_delete' pk=student_detail.pk %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'advanced:school_detail' pk=student_detail.school.pk %}" class="btn btn-secondary">Back</a>
+    </div>
+{% endblock %}
