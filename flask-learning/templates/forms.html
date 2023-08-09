@@ -1,0 +1,27 @@
+{% extends 'layouts/base.html' %}
+
+{% block page_title %} Form Page {% endblock %}
+
+{% block body_block %}
+<div class="card bg-light-warning">
+    <div class="card-body">
+        <h1>Welcome to the singup form</h1>
+        <form action="{{ url_for('thank_you') }}">
+            <div class="row">
+                <div class="col-md-3">
+                    <p>
+                <label for="first_name"></label>
+                <input type="text" placeholder="first_name" name="first_name" id="first_name" class="form-control">
+            </p>
+
+            <p>
+                <label for="last_name"></label>
+                <input type="text" placeholder="last_name" name="last_name" id="last_name" class="form-control">
+            </p>
+            <input type="submit" value="Submit" class="btn btn-primary">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

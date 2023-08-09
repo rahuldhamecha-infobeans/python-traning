@@ -1,0 +1,20 @@
+{% extends 'layouts/base.html' %}
+
+{% block body_block %}
+<h1>Basic Template Import Demo</h1>
+<h2>My Name is : {{ my_name }}</h2>
+<h2>
+    <a href="{{ url_for('index') }}">My Name</a>
+</h2>
+
+{% for letter in letters %}
+    <h2>{{ letter }}</h2>
+{% endfor %}
+
+{% if user_logged_in %}
+    <p>Welcome Back, you are now logged in!</p>
+{% else %}
+    <p>Please log in!</p>
+{% endif %}
+<img src="{{ url_for('static',filename='sample.jpg') }}" alt="" width="500px">
+{% endblock %}
