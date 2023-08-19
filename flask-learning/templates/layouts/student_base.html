@@ -30,19 +30,11 @@
         </li>
 
           <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{{ url_for('info') }}">Info</a>
+          <a class="nav-link" aria-current="page" href="{{ url_for('add_student') }}">Add Student</a>
         </li>
 
           <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{{ url_for('basic_template') }}">Basic Template</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{{ url_for('forms') }}">Forms</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{{ url_for('flask_form_basic') }}">Flask Forms ( WTF Forms )</a>
+          <a class="nav-link" aria-current="page" href="{{ url_for('del_student') }}">Delete Student</a>
         </li>
 
       </ul>
@@ -52,6 +44,7 @@
 <div class="container-fluid">
   {% block body_block %}
   <!-- Anything outsite of this block will be extended.   -->
+    <h4>Default Template</h4>
   {% endblock %}
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

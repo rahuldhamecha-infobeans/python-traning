@@ -1,6 +1,11 @@
-from flask import Flask, render_template,request
+from flask import Flask, render_template,request,session,redirect,url_for,flash
+from flask_wtf import FlaskForm
+from wtforms import (StringField,SubmitField,BooleanField,DateTimeField,SelectField, RadioField)
+from wtforms.validators import DataRequired
 
 app = Flask(__name__)
+
+app.config['SECRET_KEY'] = 'mysecrete_key'
 
 @app.route('/') # 127.0.0.1:5000
 def index():
@@ -35,6 +40,28 @@ def thank_you():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'),404
+
+class InfoForm(FlaskForm):
+
+    name = StringField("What's your name?",validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+    
+@app.route('/flask-form-basic', methods=['GET', 'POST'])
+def flask_form_basic():
+
+    name = False
+    form = InfoForm()
+
+    if form.validate_on_submit():
+        name = form.name.data
+        form.name.data = ''
+        flash("Your Name is  : {}".format(name))
+        # session['name_demo'] = name
+
+        # return redirect(url_for('thank_you'))
+
+    return render_template('flask-form.html',form=form,name=name)
 
 if __name__ == '__main__':
     app.run(debug=True)

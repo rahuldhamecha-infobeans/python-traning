@@ -1,0 +1,21 @@
+{% extends 'layouts/student_base.html' %}
+
+{% block body_block %}
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Add Student</h1>
+            </div>
+            <form method="post">
+                <div class="card-body">
+                    {{ form.hidden_tag() }}
+                    {{ form.name.label }} {{ form.name() }}
+                    {{ form.roll_no.label }} {{ form.roll_no() }}
+                </div>
+                <div class="card-footer">
+                    {{ form.submit() }}
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

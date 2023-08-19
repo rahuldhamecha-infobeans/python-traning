@@ -1,0 +1,28 @@
+{% extends 'layouts/base.html' %}
+
+{% block page_title %} Flask Form ( WTF Forms ) {% endblock %}
+
+{% block body_block %}
+
+<div class="container m-4">
+    <div class="row">
+        <div class="col-md-6">
+
+{% for message in get_flashed_messages() %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{ session['name_demo'] }}</strong>
+            {{ message }}
+            <button type="button" class="close btn-close" data-dismiss="alert" class="btn-close close" aria-label="Close"></button>
+        </div>
+{% endfor %}
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.name.label }} {{ form.name() }}
+    {{ form.submit() }}
+</form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
